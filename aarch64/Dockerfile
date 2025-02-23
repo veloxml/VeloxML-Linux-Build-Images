@@ -6,7 +6,7 @@ RUN wget https://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-14.2.0/gcc-14.
 tar -zvxf gcc-14.2.0.tar.gz && cd gcc-14.2.0 && mkdir build && cd build && \
 ../configure --enable-languages=c,c++ --prefix=/usr/local/gcc-14.2.0 --enable-checking=release --disable-bootstrap --disable-multilib && \
 make -j$(nproc) && make install &&  cd ../../ && rm -rf gcc-14.2.0
-RUN yum install -y openblas* lapack* libgomp && yum groupinstall -y 'Development Tools'
+RUN yum install -y openblas* lapack* libomp* && yum groupinstall -y 'Development Tools'
 RUN wget https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v2022.0.0.tar.gz && \
 tar -zvxf v2022.0.0.tar.gz && cd oneTBB-2022.0.0/ && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=/usr/local/tbb -DTBB_TEST=OFF .. && \
 cmake --build . && cmake --install . && cd / && rm -rf /root/oneTBB-2022.0.0*
